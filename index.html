@@ -10,6 +10,29 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     :root { --navy-deep: #0b132b; --cream: #fdfaf6; --cream-strong: #f5efe4; --gold: #d4af37; --radius: 0.75rem; }
+    .bg-navy-deep { background-color: var(--navy-deep); }
+    .text-navy-deep { color: var(--navy-deep); }
+    .border-navy-deep { border-color: var(--navy-deep); }
+    .bg-cream { background-color: var(--cream); }
+    .bg-cream-strong { background-color: var(--cream-strong); }
+    .bg-gold { background-color: var(--gold); }
+    .text-gold { color: var(--gold); }
+    .border-gold { border-color: var(--gold); }
+    .text-navy-deep-70 { color: rgba(11, 19, 43, 0.7); }
+    .text-white-60 { color: rgba(255, 255, 255, 0.6); }
+    .text-white-70 { color: rgba(255, 255, 255, 0.7); }
+    .text-white-80 { color: rgba(255, 255, 255, 0.8); }
+    .text-white-90 { color: rgba(255, 255, 255, 0.9); }
+    .bg-white-5 { background-color: rgba(255, 255, 255, 0.05); }
+    .bg-white-10 { background-color: rgba(255, 255, 255, 0.10); }
+    .bg-white-80 { background-color: rgba(255, 255, 255, 0.80); }
+    .border-white-5 { border-color: rgba(255, 255, 255, 0.05); }
+    .border-white-10 { border-color: rgba(255, 255, 255, 0.10); }
+    .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+    .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+    .shadow-sm { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1); }
+    .backdrop-blur { backdrop-filter: blur(8px); }
     .step-circle { width: 2.5rem; height: 2.5rem; border-radius: 9999px; display: grid; place-items: center; font-weight: 800; font-size: 0.875rem; border: 2px solid; transition: all 0.3s ease; }
     .step-active { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3); }
     .step-done { background: var(--navy-deep); color: #fff; border-color: var(--navy-deep); }
@@ -17,6 +40,8 @@
     .progress-line { height: 3px; border-radius: 999px; transition: width 0.5s ease; }
     .fade-in { animation: fadeIn 0.4s ease forwards; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .popup-erro { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 50; background: #fee2e2; border: 2px solid #dc2626; border-radius: 1rem; padding: 1.5rem; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4); animation: popIn 0.3s ease; max-width: 260px; width: 90%; }
+    @keyframes popIn { from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
   </style>
 </head>
 <body class="bg-cream text-navy-deep min-h-screen flex flex-col">
@@ -79,10 +104,10 @@
 
     <!-- STEP 2: Sorteio -->
     <section id="s2" class="hidden fade-in">
-      <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7 text-center">
+      <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7 text-center relative">
         <div class="w-16 h-16 rounded-full bg-gold text-navy-deep flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🎲</div>
         <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Sorteio da Sorte</h2>
-        <p class="text-navy-deep/70 mb-4">Escolha um número de 1 a 1000 para concorrer ao Toyota Ractis.</p>
+        <p class="text-navy-deep-70 mb-4">Escolha um número de 1 a 1000 para concorrer ao Toyota Ractis.</p>
 
         <!-- Alerta de tentativas -->
         <div id="alerta-tentativas" class="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4 hidden">
@@ -94,36 +119,49 @@
           <label class="block text-sm font-bold text-navy-deep mb-1">Número da Sorte (1 - 1000)</label>
           <input type="number" id="numero-sorte" min="1" max="1000" placeholder="Digite seu número" class="input w-full max-w-md mx-auto"/>
         </div>
-        <p id="contador-tentativa" class="text-sm text-navy-deep/60 mb-4">Tentativa <span id="num-tentativa">1</span> de 3</p>
+        <p id="contador-tentativa" class="text-sm text-navy-deep-70 mb-4">Tentativa <span id="num-tentativa">1</span> de 3</p>
 
         <!-- Botão sortear -->
-        <button id="btn-sortear" class="w-full max-w-md mx-auto h-14 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md mb-4">
+        <button id="btn-sortear" class="w-full max-w-md mx-auto h-14 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md mb-6">
           Sortear Agora 🎰
         </button>
 
         <!-- Resultado do sorteio (aparece após clicar) -->
         <div id="resultado-sorteio" class="hidden mb-6">
-          <div class="flex justify-center items-center gap-6 mb-4">
-            <div class="text-center">
-              <div class="text-xs text-navy-deep/60 uppercase tracking-wider">Seu Número</div>
-              <div class="text-4xl font-bold text-navy-deep" id="seu-numero">—</div>
+          <!-- Container do número sorteado (para popup em cima) -->
+          <div class="relative inline-block">
+            <div class="flex justify-center items-center gap-6 mb-4">
+              <div class="text-center">
+                <div class="text-xs text-navy-deep-70 uppercase tracking-wider">Seu Número</div>
+                <div class="text-4xl font-bold text-navy-deep" id="seu-numero">—</div>
+              </div>
+              <div class="w-px h-16 bg-black-5 mx-2"></div>
+              <div class="text-center">
+                <div class="text-xs text-navy-deep-70 uppercase tracking-wider">Número Sorteado</div>
+                <div class="text-4xl font-bold text-navy-deep relative" id="numero-sorteado">—</div>
+              </div>
             </div>
-            <div class="w-px h-16 bg-black/10 mx-2"></div>
-            <div class="text-center">
-              <div class="text-xs text-navy-deep/60 uppercase tracking-wider">Número Sorteado</div>
-              <div class="text-4xl font-bold text-navy-deep" id="numero-sorteado">—</div>
+
+            <!-- Popup de erro em cima do número sorteado -->
+            <div id="popup-erro" class="popup-erro hidden">
+              <div class="text-2xl font-bold text-red-700 mb-2">❌ Errou!</div>
+              <p class="text-sm text-navy-deep-70 mb-4" id="popup-mensagem">Essa foi por pouco!</p>
+              <p class="text-xs text-navy-deep-70 mb-4" id="popup-restantes"></p>
+              <button id="btn-popup-tentar" class="w-full py-3 rounded-lg font-bold text-white transition bg-navy-deep hover:bg-[#0a0c1c] active:scale-95 shadow-md">
+                Tentar Novamente
+              </button>
             </div>
           </div>
+
           <p id="mensagem-resultado" class="text-lg font-bold text-navy-deep mb-4"></p>
-          <p id="tentativas-restantes" class="text-sm text-navy-deep/60 mb-4"></p>
+          <p id="tentativas-restantes" class="text-sm text-navy-deep-70 mb-4"></p>
           <div class="flex justify-center gap-3">
-            <button id="btn-tentar-novamente" class="h-12 rounded-lg font-bold text-white transition bg-red-600 hover:bg-red-700 active:scale-95 shadow-md hidden px-4">Tentar Novamente</button>
             <button id="btn-proximo-sorteio" class="h-12 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md hidden px-4">Próximo &rarr;</button>
           </div>
         </div>
 
         <div class="flex justify-between mt-6">
-          <button type="button" onclick="prevStep(2)" class="h-14 rounded-lg font-bold text-navy-deep transition bg-white border border-black/10 hover:bg-black/5">Voltar</button>
+          <button type="button" onclick="prevStep(2)" class="h-14 rounded-lg font-bold text-navy-deep transition bg-white border border-black/5 hover:bg-black/5">Voltar</button>
         </div>
       </div>
     </section>
@@ -271,17 +309,20 @@
     const tentativasRestantesEl = document.getElementById('tentativas-restantes');
     const contadorTentativa = document.getElementById('contador-tentativa');
     const numTentativaEl = document.getElementById('num-tentativa');
-    const btnTentarNovamente = document.getElementById('btn-tentar-novamente');
     const btnProximoSorteio = document.getElementById('btn-proximo-sorteio');
     const alertaTentativas = document.getElementById('alerta-tentativas');
     const textoAlerta = document.getElementById('texto-alerta');
+    const popupErro = document.getElementById('popup-erro');
+    const popupMensagem = document.getElementById('popup-mensagem');
+    const popupRestantes = document.getElementById('popup-restantes');
+    const btnPopupTentar = document.getElementById('btn-popup-tentar');
 
     function resetarSorteio() {
       tentativaAtual = 1;
       numTentativaEl.textContent = '1';
       contadorTentativa.classList.remove('hidden');
       resultadoDiv.classList.add('hidden');
-      btnTentarNovamente.classList.add('hidden');
+      popupErro.classList.add('hidden');
       btnProximoSorteio.classList.add('hidden');
       btnSortear.disabled = false;
       inputNumero.disabled = false;
@@ -295,16 +336,16 @@
     }
 
     function simularSorteio() {
-      // Simula roleta girando com números aleatórios rápidos
+      // Simula roleta girando com números aleatórios rápidos por 2 segundos
       let contagem = 0;
       const intervalo = setInterval(() => {
         numeroSorteadoEl.textContent = Math.floor(Math.random() * 1000) + 1;
         contagem++;
-        if (contagem > 20) {
+        if (contagem >= 20) { // 20 iterações x 100ms = 2s
           clearInterval(intervalo);
           finalizarSorteio();
         }
-      }, 60);
+      }, 100);
     }
 
     function finalizarSorteio() {
@@ -314,7 +355,7 @@
       numeroSorteadoEl.textContent = numeroVencedor;
 
       if (numeroEscolhido === numeroVencedor) {
-        // ACERTOU - 3ª tentativa mostra que ganhou
+        // ACERTOU
         mensagemResultado.textContent = 'PARABÉNS! Você acertou o número da sorte!';
         mensagemResultado.className = 'text-lg font-bold text-emerald-700 mb-4';
         tentativasRestantesEl.textContent = '';
@@ -323,19 +364,19 @@
         btnProximoSorteio.onclick = function () {
           showStep(3);
         };
+        popupErro.classList.add('hidden');
       } else {
-        // ERROU
+        // ERROU - popup em cima do número
         tentativaAtual++;
         const restantes = MAX_TENTATIVAS - tentativaAtual + 1;
 
         if (restantes > 0) {
-          mensagemResultado.textContent = 'Essa foi por pouco! 😔';
-          mensagemResultado.className = 'text-lg font-bold text-red-700 mb-4';
-          tentativasRestantesEl.textContent = restantes + ' tentativas restantes';
+          popupMensagem.textContent = 'Essa foi por pouco! 😔';
+          popupRestantes.textContent = restantes + ' tentativas restantes';
           numTentativaEl.textContent = tentativaAtual;
-          btnTentarNovamente.classList.remove('hidden');
-          btnTentarNovamente.onclick = function () {
-            btnTentarNovamente.classList.add('hidden');
+          tentativasRestantesEl.textContent = restantes + ' tentativas restantes';
+          btnPopupTentar.onclick = function () {
+            popupErro.classList.add('hidden');
             resultadoDiv.classList.add('hidden');
             btnSortear.disabled = false;
             inputNumero.disabled = false;
@@ -347,14 +388,14 @@
           };
         } else {
           // Esgotou tentativas
-          mensagemResultado.textContent = 'Suas tentativas acabaram. Tente novamente mais tarde.';
-          mensagemResultado.className = 'text-lg font-bold text-red-700 mb-4';
+          popupMensagem.textContent = 'Suas tentativas acabaram. Tente novamente mais tarde.';
+          popupRestantes.textContent = '0 tentativas restantes';
           tentativasRestantesEl.textContent = '0 tentativas restantes';
           btnSortear.classList.add('hidden');
-          btnTentarNovamente.classList.remove('hidden');
-          btnTentarNovamente.textContent = 'Reiniciar Sorteio';
-          btnTentarNovamente.onclick = resetarSorteio;
+          btnPopupTentar.textContent = 'Reiniciar Sorteio';
+          btnPopupTentar.onclick = resetarSorteio;
         }
+        popupErro.classList.remove('hidden');
       }
       resultadoDiv.classList.remove('hidden');
       btnSortear.disabled = true;
