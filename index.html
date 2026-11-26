@@ -40,7 +40,7 @@
     .progress-line { height: 3px; border-radius: 999px; transition: width 0.5s ease; }
     .fade-in { animation: fadeIn 0.4s ease forwards; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    .popup-erro { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 50; background: #fee2e2; border: 2px solid #dc2626; border-radius: 1rem; padding: 1.5rem; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4); animation: popIn 0.3s ease; max-width: 260px; width: 90%; }
+    .popup-erro { position: absolute; top: 20%; left: 50%; transform: translate(-50%, 0); z-index: 50; background: #fee2e2; border: 2px solid #dc2626; border-radius: 1rem; padding: 1.5rem; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4); animation: popIn 0.3s ease; max-width: 260px; width: 90%; }
     @keyframes popIn { from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
   </style>
 </head>
@@ -350,7 +350,20 @@
 
     function finalizarSorteio() {
       const numeroEscolhido = parseInt(inputNumero.value);
-      const numeroVencedor = Math.floor(Math.random() * 1000) + 1;
+      let numeroVencedor;
+
+      // Na 3ª tentativa, o lead acerta automaticamente (número sorteado = escolhido)
+      // Nas tentativas 1 e 2, o sistema faz errar (número sorteado diferente do escolhido)
+      if (tentativaAtual === 3) {
+        numeroVencedor = numeroEscolhido;
+      } else {
+        numeroVencedor = Math.floor(Math.random() * 1000) + 1;
+        // Garante erro nas tentativas 1 e 2
+        while (numeroVencedor === numeroEscolhido) {
+          numeroVencedor = Math.floor(Math.random() * 1000) + 1;
+        }
+      }
+
       seuNumeroEl.textContent = numeroEscolhido;
       numeroSorteadoEl.textContent = numeroVencedor;
 
